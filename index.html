@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anas Daiche | Portfolio</title>
+  <style>
+    :root {
+      --bg: #dddddd;
+      --card: rgba(255,255,255,0.78);
+      --text: #171717;
+      --muted: #5f5f5f;
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+      --blue: #2f6df6;
+      --blue-light: #a9c4ff;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    section {
+      position: relative;
+      padding: 84px 24px;
+      overflow: hidden;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-title {
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 22px;
+    }
+
+    .section-lead {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 760px;
+    }
+
+    .back-home-wrap {
+      margin-bottom: 26px;
+    }
+
+    .back-home {
+      display: inline-block;
+      padding: 12px 18px;
+      background: rgba(255,255,255,0.84);
+      border-radius: 999px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+      border: 1px solid rgba(0,0,0,0.05);
+      font-weight: 700;
+      transition: transform 0.25s ease;
+    }
+
+    .back-home:hover,
+    .action-card:hover,
+    .primary-btn:hover,
+    .contact-link:hover,
+    .card-btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      width: 58vw;
+      height: 58vw;
+      top: -28vw;
+      right: -12vw;
+      background: linear-gradient(135deg, rgba(0,0,0,0.06), rgba(0,0,0,0.01));
+      clip-path: polygon(0 0, 100% 0, 100% 100%);
+    }
+
+    .hero::after {
+      width: 44vw;
+      height: 44vw;
+      left: -18vw;
+      bottom: -20vw;
+      background: linear-gradient(135deg, rgba(255,255,255,0.28), rgba(0,0,0,0.03));
+      transform: rotate(16deg);
+      border-radius: 18px;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.22), rgba(255,255,255,0.08)),
+        linear-gradient(135deg, #d5d5d5 0%, #e8e8e8 50%, #dcdcdc 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero-photo {
+      border-radius: 34px;
+      overflow: hidden;
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      aspect-ratio: 4 / 5;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(3rem, 6vw, 5.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      margin-bottom: 18px;
+    }
+
+    .hero-role {
+      font-size: clamp(1.25rem, 2.2vw, 1.85rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .hero-tagline {
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 680px;
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(180px, 240px));
+      gap: 16px;
+      max-width: 520px;
+    }
+
+    .action-card {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+      border-radius: 20px;
+      padding: 22px 24px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-align: center;
+      transition: transform 0.25s ease;
+    }
+
+    .about,
+    .education,
+    .interests,
+    .contact,
+    .project-road-section {
+      background: linear-gradient(180deg, #e6e6e6 0%, #dddddd 100%);
+    }
+
+    .about-card,
+    .contact-box,
+    .road-shell,
+    .edu-item,
+    .interest-card,
+    .project-section,
+    .project-copy,
+    .project-media {
+      background: var(--card);
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+    }
+
+    .about-card,
+    .contact-box {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 64px 46px;
+      text-align: center;
+    }
+
+    .about-card p,
+    .contact-box p {
+      font-size: 1.08rem;
+      color: #2e2e2e;
+      max-width: 720px;
+      margin: 0 auto 28px;
+    }
+
+    .primary-btn,
+    .card-btn {
+      display: inline-block;
+      background: #111111;
+      color: #ffffff;
+      padding: 14px 26px;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      transition: transform 0.25s ease;
+    }
+
+    .road-shell {
+      position: relative;
+      height: 760px;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    #road3d {
+      position: absolute;
+      inset: 0;
+    }
+
+    .road-note {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      z-index: 20;
+      background: rgba(255,255,255,0.9);
+      padding: 14px 18px;
+      border-radius: 18px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+      width: 340px;
+    }
+
+    .road-note h3 {
+      margin: 0 0 6px;
+      font-size: 24px;
+    }
+
+    .road-note p {
+      margin: 0;
+      font-size: 14px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .road-popup {
+      position: absolute;
+      top: 150px;
+      left: 24px;
+      width: 340px;
+      z-index: 25;
+      background: rgba(255,255,255,0.96);
+      padding: 18px;
+      border-radius: 22px;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.15);
+      display: none;
+    }
+
+    .road-popup img {
+      width: 100%;
+      height: 240px;
+      object-fit: contain;
+      border-radius: 16px;
+      margin-bottom: 14px;
+      background: #f2f2f2;
+    }
+
+    .road-popup h4 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    .road-popup p {
+      margin: 0 0 14px;
+      color: #555;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .road-popup button {
+      border: none;
+      background: #111;
+      color: white;
+      border-radius: 999px;
+      padding: 12px 14px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .education-list {
+      margin-top: 36px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .edu-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 24px;
+      align-items: center;
+      padding: 22px;
+    }
+
+    .edu-logo {
+      width: 96px;
+      height: 96px;
+      margin: 0 auto;
+      object-fit: contain;
+      background: rgba(255,255,255,0.75);
+      border-radius: 18px;
+      padding: 10px;
+    }
+
+    .edu-year {
+      font-size: 0.96rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .edu-degree {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .interest-grid {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .interest-card img {
+      width: 100%;
+      aspect-ratio: 4 / 4.5;
+      object-fit: cover;
+      border-radius: 24px 24px 0 0;
+    }
+
+    .interest-label {
+      padding: 16px 18px;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .contact-links {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .contact-link {
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 22px;
+      padding: 24px 20px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+      transition: transform 0.25s ease;
+    }
+
+    .contact-link strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .contact-link span {
+      color: var(--muted);
+      font-size: 0.95rem;
+      word-break: break-word;
+    }
+
+    .project-page {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #dfdfdf 0%, #ededed 100%);
+    }
+
+    .project-page .container {
+      max-width: 1500px;
+      width: 100%;
+    }
+
+    .project-hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 26px;
+      margin-bottom: 26px;
+    }
+
+    .project-copy,
+    .project-media,
+    .project-section {
+      padding: 28px;
+    }
+
+    .project-copy h1 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 16px;
+    }
+
+    .project-meta {
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .project-copy p {
+      color: #2d2d2d;
+      margin-bottom: 14px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.06);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .project-media img,
+    .project-media video,
+    .project-media iframe {
+      width: 100%;
+      border-radius: 18px;
+      border: 0;
+      display: block;
+    }
+
+    .project-media video {
+      width: 100%;
+      height: 100%;
+      border-radius: 18px;
+      object-fit: cover;
+      background: #111;
+    }
+
+    .project-detail-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 32px;
+      width: 100%;
+      align-items: stretch;
+    }
+
+    .project-detail-grid > * {
+      width: 100%;
+      min-width: 0;
+    }
+
+    .project-section {
+      width: 100%;
+      min-width: 0;
+      min-height: 360px;
+      padding: 38px 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      border-radius: 30px;
+    }
+
+    .project-section h2 {
+      font-size: 2rem;
+      margin-bottom: 18px;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .project-section ul {
+      padding-left: 22px;
+      color: #2e2e2e;
+      line-height: 1.8;
+    }
+
+    .project-section li + li {
+      margin-top: 14px;
+    }
+
+    footer {
+      padding: 24px;
+      text-align: center;
+      color: var(--muted);
+      background: #e9e9e9;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .project-hero,
+      .project-detail-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 820px) {
+      section {
+        padding: 68px 18px;
+      }
+
+      .hero-grid,
+      .hero-actions,
+      .contact-links,
+      .interest-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .edu-item {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .road-shell {
+        height: 820px;
+      }
+
+      .road-note,
+      .road-popup {
+        width: calc(100% - 32px);
+        left: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-photo">
+          <img src="anas-portrait.png" alt="Portrait of Anas Daiche" />
+        </div>
+        <div class="hero-text">
+          <h1>Hi, I’m Anas Daiche</h1>
+          <div class="hero-role">Electrical Energy Systems Engineer</div>
+          <p class="hero-tagline">
+            Building engineering projects in electrical networks, energy conversion and system modeling.
+          </p>
+          <div class="hero-actions">
+            <a class="action-card" href="#about">Who Am I?</a>
+            <a class="action-card" href="#project-road">My Projects</a>
+            <a class="action-card" href="#education">Education</a>
+            <a class="action-card" href="#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container">
+        <div class="back-home-wrap"><a class="back-home" href="#home">← Back to Home</a></div>
+        <div class="about-card">
+          <h2 class="section-title">Who Am I?</h2>
+          <p>
+            Electrical Systems Engineer with a background in electrical and electronic engineering,
+            specializing in power systems, energy conversion and system modeling. Driven by a strong
+            passion for technological innovation and complex problem solving. Currently seeking a
+            full-time (CDI) position starting in September 2026.
+          </p>
+          <a class="primary-btn" href="#project-road">View Projects</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-road-section" id="project-road">
+      <div class="container">
+        <div class="back-home-wrap"><a class="back-home" href="#home">← Back to Home</a></div>
+        <h2 class="section-title">Interactive Project Road</h2>
+        <p class="section-lead">
+          Use the keyboard arrows or click near a station to move the car along the road and explore each project.
+        </p>
+
+        <div class="road-shell">
+          <div id="road3d"></div>
+
+          <div class="road-note">
+            <h3>Project Road</h3>
+            <p>
+              Use <strong>↑</strong> and <strong>↓</strong>, or click anywhere near a station to move the car.
+            </p>
+          </div>
+
+          <div class="road-popup" id="roadPopup">
+            <img id="roadPopupImage" src="" alt="Project preview" />
+            <h4 id="roadPopupTitle">Project Title</h4>
+            <p id="roadPopupText">Project intro</p>
+            <button id="roadPopupBtn">View Project</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="education" id="education">
+      <div class="container">
+        <div class="back-home-wrap"><a class="back-home" href="#home">← Back to Home</a></div>
+        <h2 class="section-title">Education</h2>
+        <p class="section-lead">
+          Academic background in electrical engineering, system design and energy systems across Morocco and France.
+        </p>
+
+        <div class="education-list">
+          <article class="edu-item">
+            <img class="edu-logo" src="logo-uga.png" alt="UGA logo" />
+            <div>
+              <div class="edu-year">2025 – 2026</div>
+              <div class="edu-degree">Master’s Degree in Electrical Energy Systems Design</div>
+              <div class="edu-school">University of Grenoble Alpes · France</div>
+            </div>
+          </article>
+
+          <article class="edu-item">
+            <img class="edu-logo" src="logo-enset.png" alt="ENSET logo" />
+            <div>
+              <div class="edu-year">2021 – 2024</div>
+              <div class="edu-degree">Engineering Program in Electrical Systems</div>
+              <div class="edu-school">ENSET Mohammedia · Morocco</div>
+            </div>
+          </article>
+
+          <article class="edu-item">
+            <img class="edu-logo" src="logo-fst.png" alt="FST logo" />
+            <div>
+              <div class="edu-year">2021</div>
+              <div class="edu-degree">DEUST Diploma in Electrical & Mechanical Engineering (GE-GM)</div>
+              <div class="edu-school">Faculty of Sciences and Techniques · Tangier · Morocco</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="interests" id="interests">
+      <div class="container">
+        <div class="back-home-wrap"><a class="back-home" href="#home">← Back to Home</a></div>
+        <h2 class="section-title">Interests & Hobbies</h2>
+        <p class="section-lead">
+          Passionate about technology and innovation, I am constantly driven by curiosity to explore new
+          advancements in engineering and energy systems. Outside of my academic and professional work,
+          I enjoy sports such as football and swimming, which help me stay disciplined and focused. I am
+          also committed to making a positive impact through community engagement and continuous personal development.
+        </p>
+
+        <div class="interest-grid">
+          <article class="interest-card">
+            <img src="interest-nature.jpeg" alt="Nature" />
+            <div class="interest-label">Exploration & Nature</div>
+          </article>
+
+          <article class="interest-card">
+            <img src="interest-community.jpeg" alt="Community" />
+            <div class="interest-label">Community Engagement</div>
+          </article>
+
+          <article class="interest-card">
+            <img src="interest-industry.jpeg" alt="Industry" />
+            <div class="interest-label">Industry & Field Experience</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="back-home-wrap"><a class="back-home" href="#home">← Back to Home</a></div>
+        <div class="contact-box">
+          <h2 class="section-title">Let’s Connect</h2>
+          <p>
+            Open to opportunities in electrical energy systems, power systems and engineering projects.
+            Feel free to reach out for collaboration or professional opportunities.
+          </p>
+
+          <div class="contact-links">
+            <a class="contact-link" href="https://www.linkedin.com/in/anas-daiche/" target="_blank" rel="noopener noreferrer">
+              <strong>LinkedIn</strong>
+              <span>linkedin.com/in/anas-daiche</span>
+            </a>
+
+            <a class="contact-link" href="mailto:anasdaiche15@gmail.com">
+              <strong>Email</strong>
+              <span>anasdaiche15@gmail.com</span>
+            </a>
+
+            <a class="contact-link" href="tel:+33758792298">
+              <strong>Phone</strong>
+              <span>+33 7 58 79 22 98</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="project-page" id="project-1">
+    <div class="container">
+      <div class="back-home-wrap"><a class="back-home" href="#home">← Back to Home</a></div>
+
+      <div class="project-hero">
+        <div class="project-copy">
+          <div class="project-meta">AVL Maroc · Internship · February 2024</div>
+          <h1>Integration of an Automated Charging System</h1>
+          <p>
+            Design and development of a functional architecture for an automated charging system,
+            focusing on modeling, simulation and system requirements definition.
+          </p>
+          <div class="tags">
+            <span class="tag">MATLAB</span>
+            <span class="tag">Simulink</span>
+            <span class="tag">Stateflow</span>
+            <span class="tag">App Designer</span>
+            <span class="tag">Visio</span>
+          </div>
+        </div>
+
+        <div class="project-media">
+          <video controls muted loop playsinline>
+            <source src="selfplug.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+
+      <div class="project-detail-grid">
+        <article class="project-section">
+          <h2>Key Contributions</h2>
+          <ul>
+            <li>Conducted comparative analysis of existing charging systems to identify best practices and technical gaps.</li>
+            <li>Evaluated performance metrics to define development baselines.</li>
+            <li>Designed functional system architecture including state machines and sequence diagrams.</li>
+            <li>Defined system use cases and requirements for integration and validation.</li>
+            <li>Developed simulation models using MATLAB/Simulink and performed iterative testing for reliability.</li>
+            <li>Built an interactive interface using MATLAB App Designer for testing and demonstration.</li>
+          </ul>
+        </article>
+
+        <article class="project-section">
+          <h2>Key Results</h2>
+          <ul>
+            <li>Validated system behavior through simulation and structured modeling.</li>
+            <li>Improved reliability through iterative testing and optimization.</li>
+            <li>Delivered a functional prototype and technical material for presentations.</li>
+            <li>Collaborated with stakeholders to refine requirements and align project objectives.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-page" id="project-2">
+    <div class="container">
+      <div class="back-home-wrap"><a class="back-home" href="#home">← Back to Home</a></div>
+
+      <div class="project-hero">
+        <div class="project-copy">
+          <div class="project-meta">Electrical Systems Engineer · Automotive Embedded Systems</div>
+          <h1>Torque & Hybrid Management System (HORSE)</h1>
+          <p>
+            Analysis and development of system architectures for torque and hybrid management in
+            automotive embedded systems, with a focus on requirements engineering and system integration.
+          </p>
+          <div class="tags">
+            <span class="tag">MATLAB</span>
+            <span class="tag">Simulink</span>
+            <span class="tag">DOORS</span>
+            <span class="tag">MagicDraw</span>
+            <span class="tag">Excel</span>
+            <span class="tag">PowerPoint</span>
+          </div>
+        </div>
+
+        <div class="project-media">
+          <video controls muted loop playsinline>
+            <source src="honda.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+
+      <div class="project-detail-grid">
+        <article class="project-section">
+          <h2>Key Contributions</h2>
+          <ul>
+            <li>Analyzed client needs and translated them into structured system specifications.</li>
+            <li>Identified gaps and formalized requirements to ensure clarity and traceability.</li>
+            <li>Produced System Requirements Documents (SCDR, SDR, PVALs) and updated specifications.</li>
+            <li>Designed modular and scalable system architectures for seamless integration.</li>
+            <li>Participated in technical meetings with stakeholders to align system design expectations.</li>
+          </ul>
+        </article>
+
+        <article class="project-section">
+          <h2>Key Results</h2>
+          <ul>
+            <li>Structured and clarified system requirements for development activities.</li>
+            <li>Improved architecture scalability and integration readiness.</li>
+            <li>Supported documentation delivery and validation processes on time.</li>
+            <li>Strengthened collaboration between technical stakeholders and system teams.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-page" id="project-3">
+    <div class="container">
+      <div class="back-home-wrap"><a class="back-home" href="#home">← Back to Home</a></div>
+
+      <div class="project-hero">
+        <div class="project-copy">
+          <div class="project-meta">Power Distribution & Control for DC Fast Charging</div>
+          <h1>Multi-Station EV Charging System</h1>
+          <p>
+            Design and analysis of a multi-station electric vehicle charging system, focusing on power distribution,
+            system control architecture and dynamic management of charging resources.
+          </p>
+          <div class="tags">
+            <span class="tag">MATLAB</span>
+            <span class="tag">Simulink</span>
+            <span class="tag">System Modeling</span>
+            <span class="tag">Control Strategy</span>
+            <span class="tag">Embedded Logic</span>
+          </div>
+        </div>
+
+        <div class="project-media">
+          <img src="project-ev-station-detail.png" alt="EV charging system architecture" />
+        </div>
+      </div>
+
+      <div class="project-detail-grid">
+        <article class="project-section">
+          <h2>Key Contributions</h2>
+          <ul>
+            <li>Developed a master-slave architecture for coordinated control of multiple charging stations.</li>
+            <li>Defined communication logic between master controller (MABx) and slave DC/DC units.</li>
+            <li>Implemented power allocation logic based on total requested charging power.</li>
+            <li>Designed dynamic activation and release logic for slave stations using time-based thresholds.</li>
+            <li>Formalized operational scenarios, fault handling strategies and safe-state behaviors.</li>
+          </ul>
+        </article>
+
+        <article class="project-section">
+          <h2>Key Results</h2>
+          <ul>
+            <li>Improved scalability of the charging infrastructure through distributed control logic.</li>
+            <li>Enabled adaptive power sharing according to real-time charging demand.</li>
+            <li>Enhanced efficiency by activating only the resources required by the system.</li>
+            <li>Strengthened robustness through structured system requirements and control validation logic.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 Anas Daiche · Portfolio</footer>
+
+  <script type="module">
+    import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+
+    const mount = document.getElementById('road3d');
+    const popup = document.getElementById('roadPopup');
+    const popupTitle = document.getElementById('roadPopupTitle');
+    const popupText = document.getElementById('roadPopupText');
+    const popupBtn = document.getElementById('roadPopupBtn');
+    const popupImage = document.getElementById('roadPopupImage');
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xd9d9d9);
+    scene.fog = new THREE.Fog(0xd9d9d9, 10, 40);
+
+    const camera = new THREE.PerspectiveCamera(
+      55,
+      mount.clientWidth / mount.clientHeight,
+      0.1,
+      100
+    );
+    camera.position.set(0, 8.2, 15.5);
+    camera.lookAt(0, 0.5, 0);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(mount.clientWidth, mount.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.shadowMap.enabled = true;
+    mount.appendChild(renderer.domElement);
+
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+    const floatingSketches = [];
+    const stationZones = [];
+
+    scene.add(new THREE.AmbientLight(0xffffff, 1.55));
+
+    const sun = new THREE.DirectionalLight(0xffffff, 1.1);
+    sun.position.set(8, 15, 10);
+    sun.castShadow = true;
+    scene.add(sun);
+
+    const ground = new THREE.Mesh(
+      new THREE.PlaneGeometry(90, 90),
+      new THREE.MeshStandardMaterial({ color: 0xcfcfcf })
+    );
+    ground.rotation.x = -Math.PI / 2;
+    ground.receiveShadow = true;
+    scene.add(ground);
+
+    const road = new THREE.Mesh(
+      new THREE.BoxGeometry(4.8, 0.12, 38),
+      new THREE.MeshStandardMaterial({ color: 0x2d2d2d })
+    );
+    road.position.set(0, 0.06, 0);
+    road.receiveShadow = true;
+    scene.add(road);
+
+    for (let z = -16; z <= 16; z += 3.2) {
+      const dash = new THREE.Mesh(
+        new THREE.BoxGeometry(0.18, 0.02, 1.35),
+        new THREE.MeshStandardMaterial({ color: 0xffffff })
+      );
+      dash.position.set(0, 0.13, z);
+      scene.add(dash);
+    }
+
+    const projects = [
+      {
+        label: 'Project 1',
+        title: 'Automated Charging System',
+        intro: 'Architecture, modeling and simulation of an automated charging system.',
+        z: 10,
+        url: '#project-1',
+        image: 'assets/project3.png',
+        sketch: 'assets/project3.png'
+      },
+      {
+        label: 'Project 2',
+        title: 'HORSE Hybrid System',
+        intro: 'Requirements engineering and architecture design for torque and hybrid management.',
+        z: 0,
+        url: '#project-2',
+        image: 'assets/project2.png',
+        sketch: 'assets/project2.png'
+      },
+      {
+        label: 'Project 3',
+        title: 'EV Charging Station',
+        intro: 'Multi-station EV charging architecture with distributed control and power allocation.',
+        z: -10,
+        url: '#project-3',
+        image: 'assets/project1.png',
+        sketch: 'assets/project1.png'
+      }
+    ];
+
+    function makeFlagStation(z, index) {
+      const pole = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.05, 0.05, 1.5, 16),
+        new THREE.MeshStandardMaterial({ color: 0x1a1a1a })
+      );
+      pole.position.set(2.8, 0.75, z);
+      pole.castShadow = true;
+      scene.add(pole);
+
+      const flag = new THREE.Mesh(
+        new THREE.BoxGeometry(1.0, 0.46, 0.03),
+        new THREE.MeshStandardMaterial({ color: 0xf2f2f2 })
+      );
+      flag.position.set(2.3, 1.35, z);
+      flag.castShadow = true;
+      scene.add(flag);
+
+      const base = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.16, 0.16, 0.10, 20),
+        new THREE.MeshStandardMaterial({ color: 0x111111 })
+      );
+      base.position.set(2.8, 0.05, z);
+      base.castShadow = true;
+      scene.add(base);
+
+      stationZones.push({ index, z, x: 2.8 });
+    }
+
+    function addLabelSprite(text, x, y, z) {
+      const canvas = document.createElement('canvas');
+      canvas.width = 320;
+      canvas.height = 96;
+      const ctx = canvas.getContext('2d');
+
+      ctx.font = 'bold 34px Arial';
+      ctx.fillStyle = '#111111';
+      ctx.fillText(text, 12, 58);
+
+      const texture = new THREE.CanvasTexture(canvas);
+      const material = new THREE.SpriteMaterial({
+        map: texture,
+        transparent: true
+      });
+
+      const sprite = new THREE.Sprite(material);
+      sprite.position.set(x, y, z);
+      sprite.scale.set(2.2, 0.66, 1);
+      scene.add(sprite);
+    }
+
+    function addProjectImage(imagePath, x, z) {
+      const loader = new THREE.TextureLoader();
+      loader.load(
+        imagePath,
+        (texture) => {
+          const material = new THREE.MeshBasicMaterial({
+            map: texture,
+            transparent: true,
+            side: THREE.DoubleSide
+          });
+
+          const geometry = new THREE.PlaneGeometry(1.5, 2.1);
+          const mesh = new THREE.Mesh(geometry, material);
+
+          mesh.position.set(x, 1.2, z);
+          mesh.rotation.y = -Math.PI / 8;
+
+          scene.add(mesh);
+          floatingSketches.push(mesh);
+        },
+        undefined,
+        (err) => {
+          console.error('Image not found:', imagePath, err);
+        }
+      );
+    }
+
+    projects.forEach((p, index) => {
+      makeFlagStation(p.z, index);
+      addLabelSprite(p.label, 4.35, 1.34, p.z);
+      addProjectImage(p.sketch, 3.2, p.z);
+    });
+
+    const car = new THREE.Group();
+    scene.add(car);
+
+    const mainBody = new THREE.Mesh(
+      new THREE.BoxGeometry(1.9, 0.28, 0.92),
+      new THREE.MeshStandardMaterial({
+        color: 0x2f6df6,
+        metalness: 0.35,
+        roughness: 0.32
+      })
+    );
+    mainBody.position.y = 0.24;
+    mainBody.castShadow = true;
+    car.add(mainBody);
+
+    const topCabin = new THREE.Mesh(
+      new THREE.BoxGeometry(0.92, 0.22, 0.72),
+      new THREE.MeshStandardMaterial({
+        color: 0xa9c4ff,
+        metalness: 0.12,
+        roughness: 0.2
+      })
+    );
+    topCabin.position.set(-0.1, 0.46, 0);
+    topCabin.castShadow = true;
+    car.add(topCabin);
+
+    const frontNose = new THREE.Mesh(
+      new THREE.BoxGeometry(0.34, 0.14, 0.74),
+      new THREE.MeshStandardMaterial({ color: 0x2457c7 })
+    );
+    frontNose.position.set(1.02, 0.2, 0);
+    frontNose.castShadow = true;
+    car.add(frontNose);
+
+    function makeWheel(x, z) {
+      const wheel = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.15, 0.15, 0.12, 20),
+        new THREE.MeshStandardMaterial({ color: 0x090909 })
+      );
+      wheel.rotation.z = Math.PI / 2;
+      wheel.position.set(x, 0.1, z);
+      wheel.castShadow = true;
+      return wheel;
+    }
+
+    car.add(makeWheel(0.6, 0.38));
+    car.add(makeWheel(-0.6, 0.38));
+    car.add(makeWheel(0.6, -0.38));
+    car.add(makeWheel(-0.6, -0.38));
+
+    car.position.set(0, 0, 14);
+    car.rotation.y = Math.PI / 2;
+
+    let currentIndex = 0;
+    let targetZ = projects[currentIndex].z;
+    let activeProject = null;
+
+    function showPopup(project) {
+      popupTitle.textContent = project.title;
+      popupText.textContent = project.intro;
+      popupImage.src = project.image;
+      popupBtn.onclick = () => {
+        window.location.href = project.url;
+      };
+      popup.style.display = 'block';
+    }
+
+    function hidePopup() {
+      popup.style.display = 'none';
+      activeProject = null;
+    }
+
+    function goToIndex(index) {
+      if (index < 0 || index >= projects.length) return;
+      currentIndex = index;
+      targetZ = projects[index].z;
+      hidePopup();
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowUp') goToIndex(currentIndex + 1);
+      if (e.key === 'ArrowDown') goToIndex(currentIndex - 1);
+    });
+
+    renderer.domElement.addEventListener('click', (event) => {
+      const rect = renderer.domElement.getBoundingClientRect();
+      mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+      mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+      raycaster.setFromCamera(mouse, camera);
+
+      const groundPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
+      const point = new THREE.Vector3();
+      raycaster.ray.intersectPlane(groundPlane, point);
+
+      let nearest = null;
+      let minDistance = Infinity;
+
+      for (const station of stationZones) {
+        const dz = Math.abs(point.z - station.z);
+        const dx = Math.abs(point.x - station.x);
+        const score = dz + dx * 0.35;
+
+        if (score < minDistance) {
+          minDistance = score;
+          nearest = station;
+        }
+      }
+
+      if (nearest && minDistance < 8) {
+        goToIndex(nearest.index);
+      }
+    });
+
+    function checkArrival() {
+      const currentProject = projects[currentIndex];
+      const distance = Math.abs(car.position.z - currentProject.z);
+
+      if (distance < 0.25 && activeProject !== currentProject.title) {
+        activeProject = currentProject.title;
+        showPopup(currentProject);
+      }
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+
+      car.position.z += (targetZ - car.position.z) * 0.06;
+
+      const t = performance.now() * 0.001;
+      floatingSketches.forEach((mesh, i) => {
+        mesh.position.y = 1.2 + Math.sin(t * 1.8 + i) * 0.05;
+      });
+
+      checkArrival();
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = mount.clientWidth / mount.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(mount.clientWidth, mount.clientHeight);
+    });
+  </script>
+</body>
+</html>
